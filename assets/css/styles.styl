@@ -1,0 +1,172 @@
+body
+    height 100%
+    font-family 'Open Sans', sans-serif
+    font-size 14px
+    line-height 1.7
+    color #666666
+    background #fff
+    transition all 0.3s linear
+
+h1, h2, h3, h4, h5, h6
+    margin-bottom 30px
+
+selection
+    color #fff
+    background #D11027
+
+p
+    color #858585
+    margin 0 0 1em !important
+
+.flexslider
+    border none
+
+
+#gallery, #contacts
+    background #222
+    color #fff
+    padding-top 80px
+    padding-bottom 30px
+
+#slider
+    background #222
+    padding-top 74px
+
+#plans, #rules, #about
+    background #fff
+    color #000
+    padding-top 80px
+    padding-bottom 30px
+
+.about
+    padding-left 10px
+
+#services
+    background #222
+    color #fff
+    padding-top 80px
+    padding-bottom 30px
+    .circle
+        width 125px
+        height 125px
+        display inline-block
+        background transparent
+        overflow hidden
+        border-radius 50%
+        border 5px solid #4D4D4D
+        &:hover
+            border 5px solid #fff
+            transition all 0.2s linear 0s
+
+#footer
+    background #111
+    color #aaa
+
+#portfolio
+    display flex
+    align-items center
+    flex-direction row
+    flex-wrap wrap
+
+.plan
+    border-radius 0px
+    list-style none
+    padding 0 0 20px
+    margin 0 0 15px
+    background #fff
+    text-align center
+    box-shadow 0px 3px 3px rgba(0, 0, 0, 0.29) !important
+
+    .plan-name
+        display block
+        background gray
+
+        &:hover 
+            background #D11027 !important
+
+    li.plan-name
+        border-radius 0
+        padding 15px
+        font-size 24px
+        line-height 24px
+        color #fff
+        background #4E4E4E
+        margin-bottom 30px
+        border-top 0
+
+    li.plan-action
+        margin-top 10px
+        border-top 0
+
+    li > strong
+        color #6B6B6B
+        font-weight normal
+
+header
+    position fixed
+    width 100%
+    z-index 100
+    border-radius 0
+    top 0px 
+    border-bottom 5px solid #D11027
+    background #222
+
+    .logo
+        margin-top 10px
+        font-weight 900
+        font-size 1.5em
+        color #fff
+        float left
+
+    .navbar-items
+        font-size 1.1em
+        float right
+
+        .navbar-item
+            float left
+            padding 0 8px
+            height 60px
+            line-height 60px
+            text-align center
+            color #fff
+            text-align center
+
+        .active
+            background #D11027
+
+        a
+            color #fff
+            text-decoration none
+
+#navigation
+    position fixed
+    top 0
+    right 0
+    margin 0
+    padding 0
+    width 200px
+    background #ffffff
+    box-shadow 0 10px 10px -10px #000000
+    text-decoration none
+
+    & > li
+        margin 0
+        padding 0
+        list-style none
+
+    & > li > a
+        margin 1px
+        color #000000
+        background #cccccc
+        display block
+        padding 5px
+        transition all 400ms
+
+    & > li > a.current,  & > li:hover > a
+        background #999999
+        text-decoration none
+
+#mainNav
+    display flex
+    flex-direction row
+    justify-content flex-en

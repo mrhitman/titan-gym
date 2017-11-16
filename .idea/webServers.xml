@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="WebServers">
+    <option name="servers">
+      <webServer id="c97aad96-296c-4fe6-ba38-b2c4be94ebad" name="ho.ua" url="http://s3.ho.ua">
+        <fileTransfer host="s3.ho.ua" port="21" rootFolder="/htdocs/">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" />
+          </advancedOptions>
+          <option name="port" value="21" />
+        </fileTransfer>
+      </webServer>
+    </option>
+  </component>
+</project>
