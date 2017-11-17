@@ -1,23 +1,15 @@
 $(window).ready(function() {
-    var now = new Date();
-
-    $("#year").html(now.getFullYear());
+    $("#year").html((new Date()).getFullYear());
 
     $(".fancybox").fancybox();
 
     $('.navbar-items').onePageNav({
         currentClass: 'active',
         changeHash: false,
-        scrollSpeed: 950,
+        scrollSpeed: 350,
         scrollThreshold: 0.2,
         filter: '',
         easing: 'swing',
-        begin: function () {
-        },
-        end: function () {
-        },
-        scrollChange: function ($currentListItem) {
-        }
     });
 
     $('.flexslider').flexslider({

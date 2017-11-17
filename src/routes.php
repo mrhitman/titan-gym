@@ -15,5 +15,10 @@ $app->get('/', function (Request $request, Response $response, array $args) {
 
 $app->get('/admin', function (Request $request, Response $response, array $args) {
     $this->logger->info($request->getRequestTarget());
-    return "hello";
+    return $this->view->render($response, 'admin/index.html');
+});
+
+$app->get('/admin/login', function (Request $request, Response $response, array $args) {
+    $this->logger->info($request->getRequestTarget());
+    return $this->view->render($response, 'admin/login.html');
 });
