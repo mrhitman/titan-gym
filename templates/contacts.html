@@ -1,0 +1,22 @@
+<section id="contacts">
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <h2 class="text-center text-uppercase font-weight-bold">Свяжитесь с нами</h2>
+                <h5 class="text-center">Если у вас есть какие нибудь вопросы или предложения вы можете написать их ниже.</h5>
+                <form action="/send_mail.php" method="post">
+                    <div class="form-group">
+                        <label for="subject">Тема:</label>
+                        <input type="text" class="form-control" id="subject" name="subject" placeholder="Введите тему" required>
+                        <label for="email">Ваша почта:</label>
+                        <input type="text" class="form-control" id="email" name="email" placeholder="Введите вашу почту" required>
+                        <label for="info">Предложение:</label>
+                        <textarea name="info" id="info" cols="30" rows="10" class="form-control" placeholder="Опишите предложение" required maxlength="1000"></textarea>
+                        <small class="form-text text-muted1">Максимум 1000 символов</small>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Оставить предложение</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>

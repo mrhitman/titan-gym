@@ -1,0 +1,26 @@
+{
+    "name": "titan-gym",
+    "description": "Gym",
+    "keywords": ["gym", "sport", "rest", "router", "psr7"],
+    "homepage": "http://titan-gym.dn.ua",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Varenic Victor",
+            "email": "kabalx47@gmail.com"
+        }
+    ],
+    "require": {
+        "php": ">=7.0",
+        "slim/slim": "^3.1",
+        "slim/php-view": "^2.0",
+        "monolog/monolog": "^1.17",
+        "slim/twig-view": "^2.3"
+    },
+    "config": {
+        "process-timeout" : 0
+    },
+    "scripts": {
+        "start": "php -S localhost:8080 -t public public/index.php"
+    }
+}
