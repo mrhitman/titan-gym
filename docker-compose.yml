@@ -2,7 +2,9 @@ version: "3.1"
 
 services:
     slim:
-        image: php:7-alpine
+        build:
+            context: ./
+            dockerfile: Dockerfile
         working_dir: /var/www
         command: php -S 0.0.0.0:8080 -t public public/index.php
         environment:
@@ -14,8 +16,10 @@ services:
             - ./logs:/var/www/logs
     db:
       image: mysql
-      network_mode: host
+      ports:
+          - 3310:3306
       environment:
           MYSQL_ROOT_PASSWORD: pass4mysql
+          MYSQL_DATABASE: titan-gym
       volumes:
           - ./data:/var/lib/mysql

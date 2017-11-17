@@ -55,13 +55,17 @@ p {
   padding-bottom: 30px;
 }
 #services .circle {
-  width: 125px;
-  height: 125px;
+  width: 260px;
+  height: 260px;
   display: inline-block;
   background: transparent;
   overflow: hidden;
   border-radius: 50%;
   border: 5px solid #4d4d4d;
+}
+#services .circle img {
+  width: 260px;
+  height: 260px;
 }
 #services .circle:hover {
   border: 5px solid #fff;

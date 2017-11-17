@@ -2,39 +2,17 @@
     <h2 class="text-center text-uppercase font-weight-bold">Наши цены</h2>
     <div class="container">
         <div class="row">
+            {% for plan in plans %}
             <div class="col-3 col-xs-12">
-                <ul class="plan plan1">
-                    <li class="plan-name">1 Месяц</li>
-                    <li> <strong>Для взрослых</strong> 350 грн. </li>
-                    <li> <strong>Для школьников</strong> 300 грн. </li>
-                    <li> <strong>Для студентов</strong> 250 грн. </li>
+                <ul class="plan plan{{ loop.index }}">
+                    <li class="plan-name">{{ plan.name }}</li>
+                    <li><strong>Для взрослых</strong> {{ plan.price_adult }}</li>
+                    <li><strong>Для студентов</strong> {{ plan.price_students }}</li>
+                    <li><strong>Для школьников</strong> {{ plan.price_sсhools }}</li>
                 </ul>
             </div>
-            <div class="col-3 col-xs-12">
-                <ul class="plan plan2">
-                    <li class="plan-name">3 Месяца</li>
-                    <li> <strong>Для взрослых</strong> 750 грн. </li>
-                    <li> <strong>Для школьников</strong> 700 грн. </li>
-                    <li> <strong>Для студентов</strong> 650 грн. </li>
-                </ul>
-            </div>
-            <div class="col-3 col-xs-12">
-                <ul class="plan plan3">
-                    <li class="plan-name">Пол года</li>
-                    <li> <strong>Для взрослых</strong> 1300 грн. </li>
-                    <li> <strong>Для школьников</strong> 1200 грн. </li>
-                    <li> <strong>Для студентов</strong> 1100 грн. </li>
-                </ul>
-            </div>
-            <div class="col-3 col-xs-12">
-                <ul class="plan plan4">
-                    <li class="plan-name">Год</li>
-                    <li> <strong>Для взрослых</strong> 2400 грн. </li>
-                    <li> <strong>Для школьников</strong> 2300 грн. </li>
-                    <li> <strong>Для студентов</strong> 2200 грн. </li>
-                </ul>
-            </div>
-            <i>Разовая тренировка: <strong>40 грн, 30 грн, 30 грн</strong> для взрослых, школьников и студентов соотведственно.</i>
+            {% endfor %}
+            <i>{{ onetime_training|raw }}</i>
         </div>
     </div>
 </section>
