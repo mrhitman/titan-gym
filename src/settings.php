@@ -14,7 +14,7 @@ return [
             'level' => \Monolog\Logger::DEBUG,
         ],
         'db' => [
-            'host' => '10.10.51.161',
+            'host' => '192.168.0.105',
             'port' => 3310,
             'user' => 'root',
             'password' => 'pass4mysql',

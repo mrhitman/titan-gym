@@ -1,20 +1,108 @@
+<style>
+    .comment-box {
+        background: #e7e7e7;
+        color: #000;
+        border-radius: 0px;
+        box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.29);
+        margin-bottom: 20px;
+    }
+    .header {
+        height: 40px;
+    }
+    .header .name {
+        font-size: 1.2em;
+        margin: 5px 0px 0px 10px;
+        display: inline;
+    }
+    .header .date {
+        font-size: 0.92em;
+        display: inline;
+        margin-left: 10px;
+    }
+    .info {
+        float: right;
+        align-items: right;
+    }
+    .info .controls {
+        display: inline;
+    }
+    .comment {
+        margin: 10px;
+    }
+    .pagination {
+        display: inline-block;
+        border: 1px solid #ddd; /* Gray */
+        color: black;
+        float: left;
+        padding: 8px 16px;
+        text-decoration: none;
+        background: #fff;
+    }
+
+    .pagination a {
+        text-decoration: none;
+        color: #000;
+    }
+    .pagination .active {
+        background: #D11027;
+    }
+</style>
 <section id="contacts">
     <div class="container">
         <div class="row">
-            <div class="col">
-                <h2 class="text-center text-uppercase font-weight-bold">Свяжитесь с нами</h2>
-                <h5 class="text-center">Если у вас есть какие нибудь вопросы или предложения вы можете написать их ниже.</h5>
-                <form action="/send_mail.php" method="post">
-                    <div class="form-group">
-                        <label for="subject">Тема:</label>
-                        <input type="text" class="form-control" id="subject" name="subject" placeholder="Введите тему" required>
-                        <label for="email">Ваша почта:</label>
-                        <input type="text" class="form-control" id="email" name="email" placeholder="Введите вашу почту" required>
-                        <label for="info">Предложение:</label>
-                        <textarea name="info" id="info" cols="30" rows="10" class="form-control" placeholder="Опишите предложение" required maxlength="1000"></textarea>
-                        <small class="form-text text-muted1">Максимум 1000 символов</small>
+            <div class="offset-lg-1 col-lg-9 comment-box">
+                <div class="header">
+                    <div class="name"><b>Lorem ipsum.</b></div>
+                    <div class="date">17.11.17 в 18:21</div>
+                    <div class="info">
+                        <a class="fa fa-thumbs-o-up controls" aria-hidden="true"></a>
+                        <div class="likes controls">0</div>
+                        <a class="fa fa-thumbs-o-down controls" aria-hidden="true"></a>
                     </div>
-                    <button type="submit" class="btn btn-primary">Оставить предложение</button>
+                </div>
+                <div class="comment">
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Non, tempore rerum molestias reiciendis consequuntur hic ab magnam sequi aperiam quia officia quibusdam, fugiat dolorem consectetur.
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="offset-lg-1 col-lg-9 comment-box">
+                <div class="header">
+                    <div class="name"><b>Lorem ipsum.</b></div>
+                    <div class="date">17.11.17 в 18:21</div>
+                    <div class="info">
+                        <a class="fa fa-thumbs-o-up controls" aria-hidden="true"></a>
+                        <div class="likes controls">0</div>
+                        <a class="fa fa-thumbs-o-down controls" aria-hidden="true"></a>
+                    </div>
+                </div>
+                <div class="comment">
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Non, tempore rerum molestias reiciendis consequuntur hic ab magnam sequi aperiam quia officia quibusdam, fugiat dolorem consectetur.
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-12">
+                {% if pagination.canCreate %}
+                    {% for page in pagination %}
+                        {% if page.isCurrent %}
+                            <li class="pagination active"><span>{{ page.pageName }}</span></li>
+                        {% else %}
+                            <li class="pagination"><a href="{{ page.pathFor }}">{{ page.pageName }}</a></li>
+                        {% endif %}
+                    {% endfor %}
+                {% endif %}
+            </div>
+        </div>
+        <div class="row">
+            <div class="offset-lg-2 col-lg-8">
+                <form action="">
+                    <div class="form-group">
+                        <label for="name">Имя:</label>
+                        <input type="text" class="form-control" id="name" required>
+                        <label for="comment">Коментарий:</label>
+                        <textarea id="name" class="form-control" rows="3" required></textarea>
+                    </div>
                 </form>
             </div>
         </div>
