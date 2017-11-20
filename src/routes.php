@@ -8,47 +8,40 @@ $app->get('/', function (Request $request, Response $response, array $args) {
     $db = $this->db;
     /* @var $db Illuminate\Database\Capsule\Manager */
 
-    $plans = $db
-        ->table('plan')
-        ->get();
-
-    $onetimeTraining = $db
+    $config = $db
         ->table('config')
         ->where(['name' => 'onetime_training'])
         ->first();
 
-    $comments = $db
-        ->table('comment')
-        ->limit(10);
-
-    $commentCount = $db
-        ->table('comment')
-        ->count();
-
     return $this->view->render($response, 'index.html', [
-        'plan' => $plans,
-        'onetime_training' => $onetimeTraining->value,
+        'plans' => $db->table('plan')->get(),
+        'onetime_training' => $config->value,
         'pagination' => new Pagination($request, $this->get('router'), [
-            Pagination::OPT_TOTAL => $commentCount,
+            Pagination::OPT_TOTAL => $db->table('comment')->count(),
         ]),
-        'comments' => $comments,
+        'comments' => $db->table('comment')->limit(10),
     ]);
 });
 
-$app->group('/admin', function () use ($app) {
+$app->group('/comment', function () {
+    $this->get('/page/:page', function (Request $request, Response $response, array $args) {
+    });
+    $this->post('/like/:id', function (Request $request, Response $response, array $args) {
+    });
+    $this->post('/dislike/:id', function (Request $request, Response $response, array $args) {
+    });
+});
+
+$app->group('/admin', function () {
     $this->get('/', function (Request $request, Response $response, array $args) {
         return $this->view->render($response, 'admin/index.html');
     });
-    $app->group('/plans', function () use ($app) {
+    $this->group('/plans', function () {
         $this->get('/', function (Request $request, Response $response, array $args) {
             $db = $this->db; /* @var $db Illuminate\Database\Capsule\Manager */
 
-            $plans = $db
-                ->table('plan')
-                ->get();
-
             return $this->view->render($response, 'admin/plan/index.html', [
-                'plans' => $plans,
+                'plans' =>  $db->table('plan')->get(),
             ]);
         });
         $this->get('/add/', function (Request $request, Response $response, array $args) {
@@ -57,15 +50,10 @@ $app->group('/admin', function () use ($app) {
         });
         $this->get('/:id/', function (Request $request, Response $response, array $args) {
             $db = $this->db; /* @var $db Illuminate\Database\Capsule\Manager */
-            $id = $request->getAttribute('id');
-
-            $plan = $db
-                ->table('plan')
-                ->find($id)
-                ->first();
+            $id = $args['id'];
 
             return $this->view->render('/admin/plan.html', [
-                'plan' => $plan,
+                'plan' => $db->table('plan')->find($id)->first(),
             ]);
         });
         $this->post('/:id/', function (Request $request, Response $response, array $args) {
@@ -76,14 +64,11 @@ $app->group('/admin', function () use ($app) {
             $db = $this->db;
             /* @var $db Illuminate\Database\Capsule\Manager */
             $id = $request->getAttribute('id');
-
-            $db->table('plan')
-                ->delete($id);
-
+            $db->table('plan')->delete($id);
             return $this->view->redirect('/admin/plans');
         });
     });
-    $app->group('/config', function () use ($app) {
+    $this->group('/config', function () {
         $this->get('/', function (Request $request, Response $response, array $args) {
             $db = $this->db;
             /* @var $db Illuminate\Database\Capsule\Manager */
