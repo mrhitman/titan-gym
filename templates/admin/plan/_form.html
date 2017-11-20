@@ -1,0 +1,26 @@
+{% extends "admin/layout.html" %}
+{% block title %}Добавить план{% endblock %}
+{% block content %}
+<div class="container">
+    <div class="row">
+        <br><br><br>
+        <div class="col-lg-7">
+            <form action="">
+                <div class="form-group">
+                    <label for="name">Название:</label>
+                    <input type="text" id="name" name="name" class="form-control">
+                    <label for="price_adult">Цена для взрослых:</label>
+                    <input type="text" id="price_adult" name="price_adult" class="form-control">
+                    <label for="price_student">Цена для студентов:</label>
+                    <input type="text" id="price_student" name="price_student" class="form-control">
+                    <label for="price_schools">Цена для школьников:</label>
+                    <input type="text" id="price_schools" name="price_schools" class="form-control">
+                    <br>
+                    <input type="submit" class="btn btn-success">
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

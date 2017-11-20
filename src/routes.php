@@ -41,20 +41,22 @@ $app->group('/admin', function () use ($app) {
     });
     $app->group('/plans', function () use ($app) {
         $this->get('/', function (Request $request, Response $response, array $args) {
-            $db = $this->db;
-            /* @var $db Illuminate\Database\Capsule\Manager */
+            $db = $this->db; /* @var $db Illuminate\Database\Capsule\Manager */
 
             $plans = $db
                 ->table('plan')
                 ->get();
 
-            return $this->view->render($response, 'admin/plans.html', [
+            return $this->view->render($response, 'admin/plan/index.html', [
                 'plans' => $plans,
             ]);
         });
+        $this->get('/add/', function (Request $request, Response $response, array $args) {
+            $db = $this->db; /* @var $db Illuminate\Database\Capsule\Manager */
+            return $this->view->render($response, 'admin/plan/_form.html');
+        });
         $this->get('/:id/', function (Request $request, Response $response, array $args) {
-            $db = $this->db;
-            /* @var $db Illuminate\Database\Capsule\Manager */
+            $db = $this->db; /* @var $db Illuminate\Database\Capsule\Manager */
             $id = $request->getAttribute('id');
 
             $plan = $db
