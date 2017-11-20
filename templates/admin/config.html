@@ -1,0 +1,33 @@
+{% extends "admin/layout.html" %}
+{% block title %}Цены{% endblock %}
+{% block content %}
+<div class="container">
+    <h2>Дополнительные настройки</h2>
+    <div class="table-responsive">
+        <table class="table">
+            <thead>
+            <tr>
+                <th>#</th>
+                <th>Название</th>
+                <th>Значение</th>
+                <th>Управление</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for item in items %}
+            <tr>
+                <td>{{ loop.index }}</td>
+                <td>{{ item.name }}</td>
+                <td>{{ item.value }}</td>
+                <td>
+                    <i class="fa fa-eye" aria-hidden="true"></i>
+                    <i class="fa fa-pencil" aria-hidden="true"></i>
+                    <i class="fa fa-trash-o" aria-hidden="true"></i>
+                </td>
+            </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock %}

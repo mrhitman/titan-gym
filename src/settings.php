@@ -3,7 +3,6 @@ return [
     'settings' => [
         'displayErrorDetails' => true,
         'addContentLengthHeader' => false,
-
         'twig' => [
             'template_path' => __DIR__ . '/../templates/',
             'cache' => false
@@ -14,11 +13,15 @@ return [
             'level' => \Monolog\Logger::DEBUG,
         ],
         'db' => [
-            'host' => '192.168.0.105',
+            'driver' => 'mysql',
+            'host' => '10.10.51.161',
             'port' => 3310,
-            'user' => 'root',
+            'database' => 'titan-gym',
+            'username' => 'root',
             'password' => 'pass4mysql',
-            'dbname' => 'titan-gym',
+            'charset' => 'utf8',
+            'collation' => 'utf8_unicode_ci',
+            'prefix' => '',
         ]
     ],
 ];
