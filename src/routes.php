@@ -5,10 +5,11 @@ use Slim\Http\Response;
 use Xandros15\SlimPagination\Pagination;
 
 $app->get('/', function (Request $request, Response $response, array $args) {
-    $db = $this->db; /* @var $db Illuminate\Database\Capsule\Manager */
+    $db = $this->db;
+    /* @var $db Illuminate\Database\Capsule\Manager */
 
     $plans = $db
-        ->table('plans')
+        ->table('plan')
         ->get();
 
     $onetimeTraining = $db
@@ -34,58 +35,64 @@ $app->get('/', function (Request $request, Response $response, array $args) {
     ]);
 });
 
-$app->get('/admin', function (Request $request, Response $response, array $args) {
-    return $this->view->render($response, 'admin/index.html');
-});
+$app->group('/admin', function () use ($app) {
+    $this->get('/', function (Request $request, Response $response, array $args) {
+        return $this->view->render($response, 'admin/index.html');
+    });
+    $app->group('/plans', function () use ($app) {
+        $this->get('/', function (Request $request, Response $response, array $args) {
+            $db = $this->db;
+            /* @var $db Illuminate\Database\Capsule\Manager */
 
-$app->get('/admin/plans/', function (Request $request, Response $response, array $args) {
-    $db = $this->db; /* @var $db Illuminate\Database\Capsule\Manager */
+            $plans = $db
+                ->table('plan')
+                ->get();
 
-    $plans = $db
-        ->table('plan')
-        ->get();
+            return $this->view->render($response, 'admin/plans.html', [
+                'plans' => $plans,
+            ]);
+        });
+        $this->get('/:id/', function (Request $request, Response $response, array $args) {
+            $db = $this->db;
+            /* @var $db Illuminate\Database\Capsule\Manager */
+            $id = $request->getAttribute('id');
 
-    return $this->view->render($response, 'admin/plans.html', [
-        'plans' => $plans,
-    ]);
-});
+            $plan = $db
+                ->table('plan')
+                ->find($id)
+                ->first();
 
-$app->get('/admin/plans/{id}/', function (Request $request, Response $response, array $args) {
-    $db = $this->db; /* @var $db Illuminate\Database\Capsule\Manager */
-    $id = $request->getAttribute('id');
+            return $this->view->render('/admin/plan.html', [
+                'plan' => $plan,
+            ]);
+        });
+        $this->post('/:id/', function (Request $request, Response $response, array $args) {
+            $db = $this->db;
+            /* @var $db Illuminate\Database\Capsule\Manager */
+        });
+        $this->get('/delete/:id/', function (Request $request, Response $response, array $args) {
+            $db = $this->db;
+            /* @var $db Illuminate\Database\Capsule\Manager */
+            $id = $request->getAttribute('id');
 
-    $plan = $db
-        ->table('plan')
-        ->find($id)
-        ->first();
+            $db->table('plan')
+                ->delete($id);
 
-    return $this->view->render('/admin/plan.html', [
-        'plan' => $plan,
-    ]);
-});
+            return $this->view->redirect('/admin/plans');
+        });
+    });
+    $app->group('/config', function () use ($app) {
+        $this->get('/', function (Request $request, Response $response, array $args) {
+            $db = $this->db;
+            /* @var $db Illuminate\Database\Capsule\Manager */
 
-$app->post('/admin/plans/{id}/', function (Request $request, Response $response, array $args) {
-    $db = $this->db; /* @var $db Illuminate\Database\Capsule\Manager */
-});
+            $config = $db
+                ->table('config')
+                ->get();
 
-$app->delete('/admin/plans/{id}/', function (Request $request, Response $response, array $args) {
-    $db = $this->db; /* @var $db Illuminate\Database\Capsule\Manager */
-    $id = $request->getAttribute('id');
-
-    $db->table('plan')
-        ->delete($id);
-
-    return $this->view->redirect('/admin/plans');
-});
-
-$app->get('/admin/config/', function (Request $request, Response $response, array $args) {
-    $db = $this->db; /* @var $db Illuminate\Database\Capsule\Manager */
-
-    $config = $db
-        ->table('config')
-        ->get();
-
-    return $this->view->render($response, '/admin/config.html', [
-        'items' => $config,
-    ]);
+            return $this->view->render($response, '/admin/config.html', [
+                'items' => $config,
+            ]);
+        });
+    });
 });

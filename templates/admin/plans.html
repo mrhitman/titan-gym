@@ -24,9 +24,9 @@
                 <td>{{ plan.price_students }}</td>
                 <td>{{ plan.price_schools }}</td>
                 <td>
-                    <i class="fa fa-eye" aria-hidden="true"></i>
-                    <i class="fa fa-pencil" aria-hidden="true"></i>
-                    <i class="fa fa-trash-o" aria-hidden="true"></i>
+                    <a href="/admin/plans/{{ plan.id }}/"><i class="fa fa-eye" aria-hidden="true"></i></a>
+                    <a href="/admin/plans/{{ plan.id }}/"><i class="fa fa-pencil" aria-hidden="true"></i></a>
+                    <a href="/admin/plans/{{ plan.id }}/" data-confirm="Вы уверены?" data-method="delete"><i class="fa fa-trash-o" aria-hidden="true"></i></a>
                 </td>
             </tr>
             {% endfor %}
