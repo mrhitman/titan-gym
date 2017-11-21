@@ -49,38 +49,24 @@
 </style>
 <section id="contacts">
     <div class="container">
-        <div class="row">
-            <div class="offset-lg-1 col-lg-9 comment-box">
-                <div class="header">
-                    <div class="name"><b>Lorem ipsum.</b></div>
-                    <div class="date">17.11.17 в 18:21</div>
-                    <div class="info">
-                        <a class="fa fa-thumbs-o-up controls" aria-hidden="true"></a>
-                        <div class="likes controls">0</div>
-                        <a class="fa fa-thumbs-o-down controls" aria-hidden="true"></a>
+        {% for comment in comments %}
+            <div class="row">
+                <div class="offset-lg-1 col-lg-9 comment-box">
+                    <div class="header">
+                        <div class="name"><b>{{ comment.name }}</b>: {{ comment.email }}</div>
+                        <div class="date">{{ comment.date }}</div>
+                        <div class="info">
+                            <a class="fa fa-thumbs-o-up controls" aria-hidden="true" href="/comment/like/{{ comment.id }}"></a>
+                            <div class="likes controls">{{ comment.likes }}</div>
+                            <a class="fa fa-thumbs-o-down controls" aria-hidden="true" href="/comment/dislike/{{ comment.id }}"></a>
+                        </div>
+                    </div>
+                    <div class="comment">
+                        {{ comment.comment }}
                     </div>
                 </div>
-                <div class="comment">
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Non, tempore rerum molestias reiciendis consequuntur hic ab magnam sequi aperiam quia officia quibusdam, fugiat dolorem consectetur.
-                </div>
             </div>
-        </div>
-        <div class="row">
-            <div class="offset-lg-1 col-lg-9 comment-box">
-                <div class="header">
-                    <div class="name"><b>Lorem ipsum.</b></div>
-                    <div class="date">17.11.17 в 18:21</div>
-                    <div class="info">
-                        <a class="fa fa-thumbs-o-up controls" aria-hidden="true"></a>
-                        <div class="likes controls">0</div>
-                        <a class="fa fa-thumbs-o-down controls" aria-hidden="true"></a>
-                    </div>
-                </div>
-                <div class="comment">
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Non, tempore rerum molestias reiciendis consequuntur hic ab magnam sequi aperiam quia officia quibusdam, fugiat dolorem consectetur.
-                </div>
-            </div>
-        </div>
+        {% endfor %}
         <div class="row">
             <div class="col-lg-12">
                 {% if pagination.canCreate %}
@@ -101,7 +87,7 @@
                         <label for="name">Имя:</label>
                         <input type="text" class="form-control" id="name" required>
                         <label for="comment">Коментарий:</label>
-                        <textarea id="name" class="form-control" rows="3" required></textarea>
+                        <textarea id="comment" class="form-control" rows="3" required></textarea>
                     </div>
                 </form>
             </div>
