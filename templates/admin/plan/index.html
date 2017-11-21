@@ -16,7 +16,7 @@
             </tr>
             </thead>
             <tbody>
-            {% for plan in plans %}
+            {% for plan in items %}
             <tr>
                 <td>{{ plan.id }}</td>
                 <td>{{ plan.name }}</td>
@@ -24,15 +24,15 @@
                 <td>{{ plan.price_students }}</td>
                 <td>{{ plan.price_schools }}</td>
                 <td>
-                    <a href="/admin/plans/{{ plan.id }}/"><i class="fa fa-eye" aria-hidden="true"></i></a>
-                    <a href="/admin/plans/{{ plan.id }}/"><i class="fa fa-pencil" aria-hidden="true"></i></a>
-                    <a href="/admin/plans/{{ plan.id }}/" data-confirm="Вы уверены?" data-method="delete"><i class="fa fa-trash-o" aria-hidden="true"></i></a>
+                    <a href="/admin/plan/{{ plan.id }}/"><i class="fa fa-eye" aria-hidden="true"></i></a>
+                    <a href="/admin/plan/{{ plan.id }}/"><i class="fa fa-pencil" aria-hidden="true"></i></a>
+                    <a href="/admin/plan/delete/{{ plan.id }}/" data-confirm="Вы уверены?" data-method="delete"><i class="fa fa-trash-o" aria-hidden="true"></i></a>
                 </td>
             </tr>
             {% endfor %}
             </tbody>
         </table>
     </div>
-    <a class="btn btn-success" href="/admin/plans/add/">Добавить</a>
+    <a class="btn btn-success" href="/admin/plan/add/">Добавить</a>
 </div>
 {% endblock %}
