@@ -30,22 +30,6 @@ $app->group('/comment', function () {
         $comments = $db->table('comment')->get();
         var_dump($comments);
     });
-
-    $this->get('/like/{id}', function (Request $request, Response $response, array $args) {
-        $db = $this->db; /* @var $db Illuminate\Database\Capsule\Manager */
-        $comment = $db->table('comment')->find($args['id']);
-        $comment->likes++;
-        $db->table('comment')->where(['id' => $comment->id])->update((array) $comment);
-        return $response->withRedirect('/');
-    });
-
-    $this->get('/dislike/{id}', function (Request $request, Response $response, array $args) {
-        $db = $this->db; /* @var $db Illuminate\Database\Capsule\Manager */
-        $comment = $db->table('comment')->find($args['id']);
-        $comment->likes--;
-        $db->table('comment')->where(['id' => $comment->id])->update((array) $comment);
-        return $response->withRedirect('/');
-    });
 });
 
 $app->group('/admin', function () {
@@ -61,5 +45,10 @@ $app->group('/admin', function () {
     $this->group('/config', new AdminController([
         'app' => $this,
         'table' => 'config',
+    ]));
+
+    $this->group('/comment', new AdminController([
+        'app' => $this,
+        'table' => 'comment',
     ]));
 });

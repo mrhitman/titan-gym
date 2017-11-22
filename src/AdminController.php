@@ -12,6 +12,10 @@ class AdminController extends Component
      * @var App
      */
     protected $app;
+
+    /**
+     * @var string
+     */
     protected $table;
 
     public function __invoke()
@@ -19,6 +23,8 @@ class AdminController extends Component
         $this->app->get("/", $this->index());
         $this->app->get("/{id}/", $this->get());
         $this->app->get("/delete/{id}/", $this->delete());
+        $this->app->post("/create/", $this->create());
+        $this->app->post("/{id}/", $this->update());
     }
 
     public function index()
@@ -26,7 +32,7 @@ class AdminController extends Component
         $self = $this;
         return function (Request $request, Response $response) use ($self) {
             return $this->view->render($response, $request->getRequestTarget() . 'index.html', [
-                'items' => $this->db->table($self->table)->get()
+                'items' => $this->db->table($self->table)->get(),
             ]);
         };
     }
@@ -35,12 +41,29 @@ class AdminController extends Component
     {
         $self = $this;
         return function (Request $request, Response $response, $args) use ($self) {
-            var_dump($this->db->table($self->table)->find($args['id']));
-//            return $this->view->render($response, $request->getRequestTarget() . 'view.html');
+            return $this->view->render($response, $request->getRequestTarget() . 'view.html', [
+                'item' => $this->db->table($self->table)->find($args['id']),
+            ]);
         };
     }
 
     public function delete()
+    {
+        $self = $this;
+        return function (Request $request, Response $response, array $args) use ($self) {
+            return $response->withRedirect('/admin/' . $self->table . '/');
+        };
+    }
+
+    public function create()
+    {
+        $self = $this;
+        return function (Request $request, Response $response, array $args) use ($self) {
+            return $response->withRedirect('/admin/' . $self->table . '/');
+        };
+    }
+
+    public function update()
     {
         $self = $this;
         return function (Request $request, Response $response, array $args) use ($self) {

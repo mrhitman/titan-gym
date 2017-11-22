@@ -55,11 +55,6 @@
                     <div class="header">
                         <div class="name"><b>{{ comment.name }}</b>: {{ comment.email }}</div>
                         <div class="date">{{ comment.date }}</div>
-                        <div class="info">
-                            <a class="fa fa-thumbs-o-up controls" aria-hidden="true" href="/comment/like/{{ comment.id }}"></a>
-                            <div class="likes controls">{{ comment.likes }}</div>
-                            <a class="fa fa-thumbs-o-down controls" aria-hidden="true" href="/comment/dislike/{{ comment.id }}"></a>
-                        </div>
                     </div>
                     <div class="comment">
                         {{ comment.comment }}
@@ -70,6 +65,7 @@
         <div class="row">
             <div class="col-lg-12">
                 {% if pagination.canCreate %}
+                    <ol>
                     {% for page in pagination %}
                         {% if page.isCurrent %}
                             <li class="pagination active"><span>{{ page.pageName }}</span></li>
@@ -77,6 +73,7 @@
                             <li class="pagination"><a href="{{ page.pathFor }}">{{ page.pageName }}</a></li>
                         {% endif %}
                     {% endfor %}
+                    </ol>
                 {% endif %}
             </div>
         </div>
