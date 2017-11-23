@@ -5,16 +5,17 @@
     <div class="row">
         <br><br><br>
         <div class="col-lg-7">
-            <form action="">
+            <form action="/admin/plan/" method="post">
                 <div class="form-group">
+                    <input type="hidden" id="id" name="id" class="form-control" value="{{ item.id }}">
                     <label for="name">Название:</label>
-                    <input type="text" id="name" name="name" class="form-control">
+                    <input type="text" id="name" name="name" class="form-control" value="{{ item.name }}">
                     <label for="price_adult">Цена для взрослых:</label>
-                    <input type="text" id="price_adult" name="price_adult" class="form-control">
+                    <input type="text" id="price_adult" name="price_adult" class="form-control" value="{{ item.price_adult }}">
                     <label for="price_student">Цена для студентов:</label>
-                    <input type="text" id="price_student" name="price_student" class="form-control">
+                    <input type="text" id="price_student" name="price_students" class="form-control" value="{{ item.price_students }}">
                     <label for="price_schools">Цена для школьников:</label>
-                    <input type="text" id="price_schools" name="price_schools" class="form-control">
+                    <input type="text" id="price_schools" name="price_schools" class="form-control" value="{{ item.price_schools }}">
                     <br>
                     <input type="submit" class="btn btn-success">
                 </div>

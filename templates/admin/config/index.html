@@ -1,7 +1,6 @@
 {% extends "admin/layout.html" %}
 {% block title %}Доп. настройки{% endblock %}
 {% block content %}
-<div class="container">
     <h2>Дополнительные настройки</h2>
     <div class="table-responsive">
         <table class="table">
@@ -20,8 +19,7 @@
                 <td>{{ item.name }}</td>
                 <td>{{ item.value }}</td>
                 <td>
-                    <a href="#"><i class="fa fa-eye" aria-hidden="true"></i></a>
-                    <a href="#"><i class="fa fa-pencil" aria-hidden="true"></i></a>
+                    <a href="/admin/config/{{ item.id }}/"><i class="fa fa-pencil" aria-hidden="true" title="Редактировать"></i></a>
                     <a href="#" data-confirm="Вы уверены?" data-method="delete"><i class="fa fa-trash-o" aria-hidden="true"></i></a>
                 </td>
             </tr>
@@ -30,5 +28,4 @@
         </table>
     </div>
     <button type="button" class="btn btn-success">Добавить</button>
-</div>
 {% endblock %}

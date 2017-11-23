@@ -1,7 +1,6 @@
 {% extends "admin/layout.html" %}
 {% block title %}Цены{% endblock %}
 {% block content %}
-<div class="container">
     <h2>Расценки</h2>
     <div class="table-responsive">
         <table class="table">
@@ -24,8 +23,7 @@
                 <td>{{ plan.price_students }}</td>
                 <td>{{ plan.price_schools }}</td>
                 <td>
-                    <a href="/admin/plan/{{ plan.id }}/"><i class="fa fa-eye" aria-hidden="true"></i></a>
-                    <a href="/admin/plan/{{ plan.id }}/"><i class="fa fa-pencil" aria-hidden="true"></i></a>
+                    <a href="/admin/plan/{{ plan.id }}/"><i class="fa fa-pencil" aria-hidden="true" title="Редактировать"></i></a>
                     <a href="/admin/plan/delete/{{ plan.id }}/" data-confirm="Вы уверены?" data-method="delete"><i class="fa fa-trash-o" aria-hidden="true"></i></a>
                 </td>
             </tr>
@@ -34,5 +32,4 @@
         </table>
     </div>
     <a class="btn btn-success" href="/admin/plan/add/">Добавить</a>
-</div>
 {% endblock %}

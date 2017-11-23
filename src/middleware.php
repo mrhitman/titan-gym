@@ -4,7 +4,7 @@ use Slim\Http\Request;
 use Slim\Http\Response;
 
 $app->add(function (Request $request, Response $response, $next) {
-    $this->logger->info($request->getRequestTarget());
+    $this->logger->info($request->getMethod() . ":" . $request->getRequestTarget());
     $response = $next($request, $response);
     return $response;
 });

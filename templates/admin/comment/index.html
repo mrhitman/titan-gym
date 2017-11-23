@@ -1,27 +1,33 @@
 {% extends "admin/layout.html" %}
-{% block title %}Доп. настройки{% endblock %}
+{% block title %}Вопросы{% endblock %}
 {% block content %}
-<div class="container">
-    <h2>Дополнительные настройки</h2>
+    <h2>Вопросы</h2>
     <div class="table-responsive">
         <table class="table">
             <thead>
             <tr>
                 <th>#</th>
-                <th>Название</th>
-                <th>Значение</th>
+                <th>Имя</th>
+                <th>Почта</th>
+                <th>Вопрос</th>
+                <th>Опубликовано</th>
+                <th>Дата</th>
                 <th>Управление</th>
             </tr>
             </thead>
             <tbody>
             {% for item in items %}
             <tr>
-                <td>{{ loop.index }}</td>
+                <td>{{ item.id }}</td>
                 <td>{{ item.name }}</td>
-                <td>{{ item.value }}</td>
+                <td>{{ item.email }}</td>
+                <td>{{ item.comment }}</td>
+                <td>{{ item.published }}</td>
+                <td>{{ item.date }}</td>
                 <td>
-                    <a href="#"><i class="fa fa-eye" aria-hidden="true"></i></a>
-                    <a href="#"><i class="fa fa-pencil" aria-hidden="true"></i></a>
+                    <a href="#"><i class="fa fa-reply" aria-hidden="true" title="Ответить"></i></a>
+                    <a href="#"><i class="fa fa-eye" aria-hidden="true" title="Подробности"></i></a>
+                    <a href="#"><i class="fa fa-pencil" aria-hidden="true" title="Редактировать"></i></a>
                     <a href="#" data-confirm="Вы уверены?" data-method="delete"><i class="fa fa-trash-o" aria-hidden="true"></i></a>
                 </td>
             </tr>
@@ -29,6 +35,4 @@
             </tbody>
         </table>
     </div>
-    <button type="button" class="btn btn-success">Добавить</button>
-</div>
 {% endblock %}
