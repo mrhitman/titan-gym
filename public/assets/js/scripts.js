@@ -1,4 +1,4 @@
-$(window).ready(function() {
+$(window).ready(function () {
     $("#year").html((new Date()).getFullYear());
 
     $(".fancybox").fancybox();
@@ -26,5 +26,38 @@ $(window).ready(function() {
         randomize: true,
         controlNav: true,
         directionNav: false,
+    });
+
+    $("#comment-form").on("submit", function (e) {
+        e.preventDefault();
+        var name = $("#name").val();
+        var email = $("#email").val();
+        var comment = $("#comment").val();
+        $.ajax({
+            type: 'POST',
+            url: $("#comment-form").attr("action"),
+            data: {
+                name: name,
+                email: email,
+                comment: comment,
+                published: 1
+            },
+            success: function (r) {
+                console.log(r);
+                console.log(r.name);
+                $(".comments").append("<div class=\"row\">\n" +
+                    "            <div class=\"offset-lg-1 col-lg-9 comment-box\">\n" +
+                    "                <div class=\"header\">\n" +
+                    "                    <div class=\"name\"><b>" + r.name + "</b>: " + r.email + "</div>\n" +
+                    "                    <div class=\"date\">" + r.date + "</div>\n" +
+                    "                </div>\n" +
+                    "                <div class=\"comment\">" + r.comment + "</div>\n" +
+                    "            </div>\n" +
+                    "        </div>");
+            }
+        });
+        $("#name").val('');
+        $("#email").val('');
+        $("#comment").val('');
     });
 });
