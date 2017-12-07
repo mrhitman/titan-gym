@@ -38,6 +38,22 @@ $app->group('/comment', function () {
 
     $this->post('/', function (Request $request, Response $response, array $args) {
         $item = $request->getParsedBody();
+        $secretKey = "6LfCFDwUAAAAAJ5qrLwPG-bfErU3WJsfheawx8Fj";
+        if (isset($_POST['g-recaptcha-response'])){
+            $captcha=$_POST['g-recaptcha-response'];
+        }
+        if(!$captcha) {
+          return;
+        }
+        $ip = $_SERVER['REMOTE_ADDR'];
+        $response = file_get_contents("https://www.google.com/recaptcha/api/siteverify?secret="
+            . $secretKey."&response="
+            . $captcha . "&remoteip=" 
+            . $ip);
+        $responseKeys = json_decode($response, true);
+        if(intval($responseKeys["success"]) !== 1) {
+          return;
+        }
         $item['date'] = date('Y-m-d H:i:s');
         $this->db->table('comment')->insert($item);
         return $response->withJson($item);
@@ -68,5 +84,10 @@ $app->group('/admin', function () {
     $this->group('/comment', new AdminController([
         'app' => $this,
         'table' => 'comment',
+    ]));
+
+    $this->group('/section', new AdminController([
+        'app' => $this,
+        'table' => 'section',
     ]));
 });

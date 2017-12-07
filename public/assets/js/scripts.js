@@ -1,7 +1,7 @@
 $(window).ready(function () {
     $("#year").html((new Date()).getFullYear());
 
-    $(".fancybox").fancybox();
+    $(".fancybox").fancybox({});
 
     $('.navbar-items').onePageNav({
         currentClass: 'active',
@@ -43,8 +43,9 @@ $(window).ready(function () {
                 published: 1
             },
             success: function (r) {
-                console.log(r);
-                console.log(r.name);
+                if (!r) {
+                    return;
+                }
                 $(".comments").append("<div class=\"row\">\n" +
                     "            <div class=\"offset-lg-1 col-lg-9 comment-box\">\n" +
                     "                <div class=\"header\">\n" +

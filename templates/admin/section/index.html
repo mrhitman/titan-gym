@@ -1,0 +1,35 @@
+{% extends "admin/layout.html" %}
+{% block title %}Содержимое{% endblock %}
+{% block content %}
+    <h2>Расценки</h2>
+    <div class="table-responsive">
+        <table class="table">
+            <thead>
+            <tr>
+                <th>#</th>
+                <th>Название</th>
+                <th>Шаблон</th>
+                <th>Порядковый номер</th>
+                <th>Опубликовано</th>
+                <th>Управление</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for section in items %}
+            <tr>
+                <td>{{ section.id }}</td>
+                <td>{{ section.title }}</td>
+                <td>{{ section.name }}</td>
+                <td>{{ section.index }}</td>
+                <td>{{ section.active }}</td>
+                <td>
+                    <a href="/admin/section/{{ section.id }}/"><i class="fa fa-pencil" aria-hidden="true" title="Редактировать"></i></a>
+                    <a href="/admin/section/delete/{{ section.id }}/" data-confirm="Вы уверены?" data-method="delete"><i class="fa fa-trash-o" aria-hidden="true"></i></a>
+                </td>
+            </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    <a class="btn btn-success" href="/admin/section/add/">Добавить</a>
+{% endblock %}

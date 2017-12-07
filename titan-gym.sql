@@ -11,7 +11,7 @@
  Target Server Version : 50720
  File Encoding         : 65001
 
- Date: 23/11/2017 16:50:51
+ Date: 07/12/2017 16:34:55
 */
 
 SET NAMES utf8mb4;
@@ -27,7 +27,7 @@ CREATE TABLE `answer`  (
   `body` varchar(500) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   `comment_id` int(11) NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 3 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 2 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of answer
@@ -46,7 +46,7 @@ CREATE TABLE `comment`  (
   `published` tinyint(3) UNSIGNED NOT NULL,
   `date` datetime(0) NOT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 36 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 6 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Table structure for config
@@ -84,5 +84,28 @@ INSERT INTO `plan` VALUES (1, '1 Месяц', '350 грн.', '300 грн.', '250
 INSERT INTO `plan` VALUES (2, '3 Месяца', '750 грн.', '700 грн.', ' 650 грн.');
 INSERT INTO `plan` VALUES (3, 'Пол года', '1300 грн.', '1200 грн.', '1100 грн.');
 INSERT INTO `plan` VALUES (4, 'Год', '2400 грн.', '2300 грн.', '2100 грн.');
+
+-- ----------------------------
+-- Table structure for section
+-- ----------------------------
+DROP TABLE IF EXISTS `section`;
+CREATE TABLE `section`  (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `title` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `index` tinyint(3) NULL DEFAULT NULL,
+  `active` tinyint(3) NULL DEFAULT NULL,
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 8 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of section
+-- ----------------------------
+INSERT INTO `section` VALUES (2, 'services.html', 'Залы', 2, 1);
+INSERT INTO `section` VALUES (3, 'about.html', 'О нас', 3, 1);
+INSERT INTO `section` VALUES (4, 'gallery.html', 'Галерея', 4, 1);
+INSERT INTO `section` VALUES (5, 'plans.html', 'Тарифы', 5, 1);
+INSERT INTO `section` VALUES (6, 'contacts.html', 'Обратная связь', 6, 1);
+INSERT INTO `section` VALUES (7, 'rules.html', 'Правила', 7, 1);
 
 SET FOREIGN_KEY_CHECKS = 1;
