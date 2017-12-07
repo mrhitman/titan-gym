@@ -14,9 +14,12 @@ $app->get('/', function (Request $request, Response $response, array $args) {
         ->first();
 
     $comments =  $db->table('comment')
-//        ->leftJoin('answer', 'comment.id', '=', 'answer.comment_id')
         ->where(['comment.published' => 1])
         ->limit(10)
+        ->get();
+
+    $sections = $db->table('section')
+        ->where(['active' => 1])
         ->get();
 
     return $this->view->render($response, 'index.html', [
@@ -26,6 +29,7 @@ $app->get('/', function (Request $request, Response $response, array $args) {
             Pagination::OPT_TOTAL => $db->table('comment')->count(),
         ]),
         'comments' => $comments,
+        'sections' => $sections,
     ]);
 });
 
