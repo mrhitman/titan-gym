@@ -5,12 +5,10 @@
         <div class="logo-phone"><i class="fa fa-phone" aria-hidden="true"></i> +38(095)137-06-13</div>
         <div class="navbar-items">
             <div class="navbar-item active"><a href="#main" class="scroll-link">Главная</a></div>
-            <div class="navbar-item"><a href="#services" class="scroll-link">Залы</a></div>
-            <div class="navbar-item"><a href="#about" class="scroll-link">О нас</a></div>
-            <div class="navbar-item"><a href="#gallery" class="scroll-link">Галерея</a></div>
-            <div class="navbar-item"><a href="#plans" class="scroll-link">Тарифы</a></div>
-            <div class="navbar-item"><a href="#contacts" class="scroll-link">Обратная связь</a></div>
-            <div class="navbar-item"><a href="#rules" class="scroll-link">Правила</a></div>
+
+            {% for section in sections %}
+                <div class="navbar-item"><a href="#{{ section.name|replace({'.html': ''}) }}" class="scroll-link">{{ section.title }}</a></div>
+            {% endfor %}
         </div>
     </div>
 </header>

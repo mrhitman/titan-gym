@@ -10,28 +10,32 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.1.25/jquery.fancybox.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flexslider/2.6.4/flexslider.min.css">
+
+    <link rel="stylesheet" href="assets/bower_components/lightgallery/dist/css/lightgallery.css">
     <link rel="stylesheet" href="assets/css/styles.css">
 </head>
 <body>
     {% include "main.html" %}
     {% include "menu.html" %}
     {% include "slider.html" %}
-    {% include "services.html" %}
-    {% include "about.html" %}
-    {% include "gallery.html" %}
-    {% include "plans.html" %}
-    {% include "contacts.html" %}
-    {% include "rules.html" %}
+    {% for section in sections %}
+        {% include section.name %}
+    {% endfor %}
     {% include "footer.html" %}
+
 
     <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.1.25/jquery.fancybox.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lightgallery/1.6.5/js/lightgallery-all.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/flexslider/2.6.4/jquery.flexslider-min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-one-page-nav/3.0.0/jquery.nav.min.js"></script>
+
+    <script src="assets/bower_components/jquery/dist/jquery.min.js"></script>
+    <script src="assets/bower_components/lightgallery/dist/js/lightgallery.min.js"></script>
+    <script src="assets/bower_components/lightgallery/dist/js/lg-thumbnail.min.js"></script>
+    <script src="assets/bower_components/lightgallery/dist/js/lg-fullscreen.min.js"></script>
     <script src="assets/js/scripts.js"></script>
 </body>
 </html>

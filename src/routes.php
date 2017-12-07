@@ -20,6 +20,7 @@ $app->get('/', function (Request $request, Response $response, array $args) {
 
     $sections = $db->table('section')
         ->where(['active' => 1])
+        ->orderBy('index')
         ->get();
 
     return $this->view->render($response, 'index.html', [
